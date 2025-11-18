@@ -1,6 +1,3 @@
-"use client";
-
-
 import { useState } from "react";
 import { ArrowRight, CheckCircle2, LineChart, Database, Bot, Search, ShieldCheck } from "lucide-react";
 
@@ -92,6 +89,17 @@ export default function LandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-slate-400">
             Early access for institutions and startups in Hong Kong & Singapore — limited to the first 100 organisations.
+          </p>
+        </div>
+      </section>
+
+      {/* Sourcing Transparency */}
+      <section className="py-20 border-t border-slate-800/60 bg-slate-950">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-4xl font-bold">Sourcing Transparency</h2>
+          <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
+            All data is sourced exclusively from official regulators, governments, licensed institutions, issuers, and auditors.
+            No speculative or unverified sources. Every entry includes citations and update timestamps.
           </p>
         </div>
       </section>
