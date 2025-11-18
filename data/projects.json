@@ -1,43 +1,232 @@
 [
     {
-      "project_id": "hkma_tokenised_green_bond_2024",
-      "name": "HKMA Tokenised Green Bond 2024",
-      "issuer": "Government of the Hong Kong Special Administrative Region",
+      "project_id": "project_genesis_poc_tokenised_green_bonds",
+      "name": "Project Genesis – Proof-of-concept of tokenised green bonds",
+      "issuer": "Hong Kong Monetary Authority / BIS Innovation Hub HK",
       "jurisdiction": "Hong Kong",
-      "category": "Tokenised Government Bond",
-      "asset_type": "Green Bond",
-      "regulator": ["HKMA"],
-      "status": "Live",
-      "blockchain": ["Permissioned DLT"],
-      "custodians": ["HSBC Orion"],
-      "infrastructure_partners": ["HSBC", "HKMA"],
-      "official_sources": [
-        "https://www.hkma.gov.hk/eng/news-and-media/press-releases/"
+      "category": "Tokenised Bonds",
+      "status": "Completed",
+      "regulator": "HKMA",
+      "announcement_date": "",
+      "url": "https://www.hkma.gov.hk/eng/key-functions/international-financial-centre/bond-market-development/digital-bond-knowledge-repository/",
+      "key_participants": [
+        "Hong Kong Monetary Authority",
+        "BIS Innovation Hub Hong Kong Centre"
       ],
-      "announced_date": "2024-02-20",
-      "go_live_date": "2024-02-20",
-      "description": "Tokenised green bond issuance under HKMA’s tokenisation initiative.",
-      "last_updated": "2025-11-18"
+      "technical_stack": "",
+      "description": "Proof-of-concept conducted with the BIS Innovation Hub Hong Kong Centre to concept-test the issuance of tokenised green bonds in Hong Kong and lay the foundation for real-money tokenised bond transactions.",
+      "notes": "Described in the EvergreenHub timeline as a 2021 proof-of-concept of tokenised bonds that concept-tested tokenised green bond issuance in Hong Kong and informed later real-money deals."
     },
     {
-      "project_id": "mas_project_guardian_fund_tokens",
-      "name": "MAS Project Guardian – Tokenised Fund Units Pilot",
-      "issuer": "Multiple financial institutions under MAS Project Guardian",
-      "jurisdiction": "Singapore",
-      "category": "Tokenised Fund",
-      "asset_type": "Unit Trust / Fund Units",
-      "regulator": ["MAS"],
-      "status": "Pilot",
-      "blockchain": ["Permissioned DLT", "Public EVM (pilot)"],
-      "custodians": [],
-      "infrastructure_partners": [],
-      "official_sources": [
-        "https://www.mas.gov.sg/news"
+      "project_id": "hksar_inaugural_tokenised_green_bond_2023",
+      "name": "HKSAR Government’s Inaugural Tokenised Green Bond Offering",
+      "issuer": "Government of the Hong Kong Special Administrative Region",
+      "jurisdiction": "Hong Kong",
+      "category": "Tokenised Bonds",
+      "status": "Completed",
+      "regulator": "HKMA",
+      "announcement_date": "2023-02-16",
+      "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2023/02/20230216-3/",
+      "key_participants": [
+        "Government of the Hong Kong Special Administrative Region",
+        "Hong Kong Monetary Authority"
       ],
-      "announced_date": "2023-11-01",
-      "go_live_date": null,
-      "description": "Tokenised fund and wealth pilots under MAS Project Guardian.",
-      "last_updated": "2025-11-18"
+      "technical_stack": "Digital bond structure implemented on a DLT-based platform and integrated with Hong Kong’s existing market infrastructure for issuance, trading and settlement.",
+      "description": "First tokenised government green bond issuance globally under the Government Green Bond Programme, using DLT to support the full bond lifecycle and shortening primary settlement from typical T+5 to T+1.",
+      "notes": "Tokenised issuance size was HK$800 million and is highlighted in EvergreenHub as the first tokenised government green bond in the world."
+    },
+    {
+      "project_id": "hksar_digital_green_bonds_multicurrency_2024",
+      "name": "HKSAR Government’s Digital Green Bonds Offering (Second Tokenised Issuance)",
+      "issuer": "Government of the Hong Kong Special Administrative Region",
+      "jurisdiction": "Hong Kong",
+      "category": "Tokenised Bonds",
+      "status": "Completed",
+      "regulator": "HKMA",
+      "announcement_date": "2024-02-07",
+      "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2024/02/20240207-6/",
+      "key_participants": [
+        "Government of the Hong Kong Special Administrative Region",
+        "Hong Kong Monetary Authority"
+      ],
+      "technical_stack": "Digital bond platform supporting multi-currency issuance, lifecycle events and on-chain accessibility of green bond information.",
+      "description": "Second tokenised government green bond deal and the world’s first multi-currency digital bond, issuing around HK$6 billion equivalent in HKD, RMB, USD and EUR.",
+      "notes": "Described as the first multi-currency digital bond in the world, attracting a broad investor base including asset managers, banks, insurers, private banks and non-financial institutions."
+    },
+    {
+      "project_id": "hksar_third_digital_green_bonds_2025",
+      "name": "HKSAR Government’s Third Digital Green Bonds Offering",
+      "issuer": "Government of the Hong Kong Special Administrative Region",
+      "jurisdiction": "Hong Kong",
+      "category": "Tokenised Bonds",
+      "status": "Completed",
+      "regulator": "HKMA",
+      "announcement_date": "2025-11-11",
+      "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2025/11/20251111-6/",
+      "key_participants": [
+        "Government of the Hong Kong Special Administrative Region",
+        "Hong Kong Monetary Authority",
+        "HSBC (HSBC Orion platform)",
+        "Bank of China (Hong Kong)",
+        "Bank of Communications Co., Ltd. Hong Kong Branch",
+        "BNP Paribas",
+        "Crédit Agricole CIB",
+        "ICBC (Asia)",
+        "J.P. Morgan",
+        "Standard Chartered Bank",
+        "Société Générale",
+        "UBS"
+      ],
+      "technical_stack": "Digital bond issuance executed on the HSBC Orion permissioned DLT platform with clearing and settlement via the HKMA’s Central Moneymarkets Unit (CMU).",
+      "description": "Third digital green bond issuance under the Government Green Bond Programme, further scaling tokenised bond adoption in Hong Kong.",
+      "notes": "Press release specifies HSBC Orion as the digital platform and CMU as the clearing and settlement system; continues the Project Evergreen digital bond trajectory."
+    },
+    {
+      "project_id": "hkma_digital_bond_grant_scheme_dbgs",
+      "name": "Digital Bond Grant Scheme (DBGS)",
+      "issuer": "Hong Kong Monetary Authority",
+      "jurisdiction": "Hong Kong",
+      "category": "Tokenised Securities Infrastructure",
+      "status": "Live",
+      "regulator": "HKMA",
+      "announcement_date": "2024-11-28",
+      "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2024/11/20241128-3/",
+      "key_participants": [
+        "Hong Kong Monetary Authority"
+      ],
+      "technical_stack": "",
+      "description": "HKMA grant scheme offering issuers up to HK$2.5 million per eligible digital bond issuance in Hong Kong to incentivise tokenised and digital bond deals.",
+      "notes": "Referenced in EvergreenHub as part of HKMA’s efforts to promote broader adoption of digital bonds; formal terms are set out in the Guideline on the Digital Bond Grant Scheme."
+    },
+    {
+      "project_id": "hkma_evergreenhub_digital_bond_repository",
+      "name": "EvergreenHub – Digital Bond Knowledge Repository",
+      "issuer": "Hong Kong Monetary Authority",
+      "jurisdiction": "Hong Kong",
+      "category": "Tokenised Securities Infrastructure",
+      "status": "Live",
+      "regulator": "HKMA",
+      "announcement_date": "",
+      "url": "https://www.hkma.gov.hk/eng/key-functions/international-financial-centre/bond-market-development/digital-bond-knowledge-repository/",
+      "key_participants": [
+        "Hong Kong Monetary Authority"
+      ],
+      "technical_stack": "",
+      "description": "HKMA’s online digital bond knowledge repository under Project Evergreen, sharing materials on tokenised bond transactions.",
+      "notes": "Consolidates HKMA’s digital bond journey from Project Genesis through multiple tokenised bond issuances and provides guidance such as the HKMA paper on Bond Tokenisation in Hong Kong."
+    },
+    {
+      "project_id": "project_ensemble_sandbox",
+      "name": "Project Ensemble Sandbox – Asset Tokenisation Use Case Platform",
+      "issuer": "Hong Kong Monetary Authority",
+      "jurisdiction": "Hong Kong",
+      "category": "Tokenised Securities Infrastructure",
+      "status": "Pilot",
+      "regulator": "HKMA",
+      "announcement_date": "2024-08-28",
+      "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2024/08/20240828-3/",
+      "key_participants": [
+        "Hong Kong Monetary Authority",
+        "Securities and Futures Commission",
+        "BIS Innovation Hub Hong Kong Centre",
+        "Bank of China (Hong Kong)",
+        "Hang Seng Bank",
+        "HSBC",
+        "Standard Chartered Hong Kong",
+        "HashKey Group",
+        "Ant Digital Technologies",
+        "Microsoft Hong Kong"
+      ],
+      "technical_stack": "Multi-ledger sandbox environment connecting participating banks’ tokenised deposit platforms to an interoperability layer for PvP and DvP settlement.",
+      "description": "HKMA-led sandbox for interbank settlement using experimental tokenised money for transactions involving tokenised assets.",
+      "notes": "Press release highlights four main asset-tokenisation themes and collaboration with SFC, industry and academia."
+    },
+    {
+      "project_id": "ensembletx_pilot_platform",
+      "name": "EnsembleTX – Project Ensemble Pilot Platform for Tokenised Deposits and Digital Assets",
+      "issuer": "Hong Kong Monetary Authority",
+      "jurisdiction": "Hong Kong",
+      "category": "Tokenised Securities Infrastructure",
+      "status": "Pilot",
+      "regulator": "HKMA",
+      "announcement_date": "2025-11-13",
+      "url": "https://www.hkma.gov.hk/eng/news-and-media/press-releases/2025/11/20251113-5/",
+      "key_participants": [
+        "Hong Kong Monetary Authority",
+        "Participating commercial banks",
+        "Participating financial market infrastructures"
+      ],
+      "technical_stack": "Built on Project Ensemble Sandbox to support real-value PvP and DvP settlement of tokenised deposits and digital assets.",
+      "description": "Pilot phase of Project Ensemble enabling real-value transactions involving tokenised deposits and digital assets, initially focusing on tokenised money market fund transactions.",
+      "notes": "Described by HKMA as a shift from PoCs to live-value tokenised deposit and asset settlement in Hong Kong."
+    },
+    {
+      "project_id": "sfc_circular_23ec53_tokenisation_sfc_products",
+      "name": "SFC Circular on tokenisation of SFC-authorised investment products (ref. 23EC53)",
+      "issuer": "Securities and Futures Commission – Investment Products Division",
+      "jurisdiction": "Hong Kong",
+      "category": "Digital Securities Licensing",
+      "status": "Live",
+      "regulator": "SFC",
+      "announcement_date": "2023-11-02",
+      "url": "https://apps.sfc.hk/edistributionWeb/api/circular/list-content/circular/doc?lang=EN&refNo=23EC53",
+      "key_participants": [
+        "Securities and Futures Commission – Investment Products Division"
+      ],
+      "technical_stack": "Principles-based requirements for tokenisation arrangements using DLT, including permissioned structures and smart contract audits where requested.",
+      "description": "Circular setting out conditions for allowing tokenisation of SFC-authorised investment products offered to the public in Hong Kong.",
+      "notes": "References intermediaries’ circular and sets expectations on record keeping, smart contract integrity, cybersecurity and disclosure."
+    },
+    {
+      "project_id": "sfc_circular_23ec52_intermediaries_tokenised_securities",
+      "name": "SFC Circular on intermediaries engaging in tokenised securities-related activities (ref. 23EC52)",
+      "issuer": "Securities and Futures Commission",
+      "jurisdiction": "Hong Kong",
+      "category": "Digital Securities Licensing",
+      "status": "Live",
+      "regulator": "SFC",
+      "announcement_date": "2023-11-02",
+      "url": "https://apps.sfc.hk/edistributionWeb/api/circular/list-content/circular/doc?lang=EN&refNo=23EC52",
+      "key_participants": [
+        "Securities and Futures Commission"
+      ],
+      "technical_stack": "Guidance on using DLT in tokenised securities, including expectations by DLT archetype and risk controls.",
+      "description": "Guidance to intermediaries on dealing, advising, managing and trading tokenised securities and funds investing in tokenised securities.",
+      "notes": "Clarifies that existing requirements for traditional securities apply equally to tokenised securities, with additional focus on technology and ownership risks."
+    },
+    {
+      "project_id": "sfc_circular_25ec57_digital_assets_update",
+      "name": "SFC Circular ref. 25EC57 – Updated guidance on digital assets including tokenised securities and stablecoins",
+      "issuer": "Securities and Futures Commission",
+      "jurisdiction": "Hong Kong",
+      "category": "Digital Securities Licensing",
+      "status": "Live",
+      "regulator": "SFC",
+      "announcement_date": "2025-11-03",
+      "url": "https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/openFile?refNo=25EC57",
+      "key_participants": [
+        "Securities and Futures Commission"
+      ],
+      "technical_stack": "",
+      "description": "Updated circular providing guidance to intermediaries on activities involving digital assets, including tokenised securities and stablecoins.",
+      "notes": "Updates and extends the 2 November 2023 circular on intermediaries engaging in tokenised securities-related activities."
+    },
+    {
+      "project_id": "sfc_presentation_tokenisation_sfc_products",
+      "name": "Presentation Materials – Tokenisation of SFC-authorised investment products",
+      "issuer": "Securities and Futures Commission – Investment Products Division",
+      "jurisdiction": "Hong Kong",
+      "category": "Misc Regulatory",
+      "status": "Live",
+      "regulator": "SFC",
+      "announcement_date": "2024-01-10",
+      "url": "https://www.sfc.hk/en/faqs/Publicly-offered-investment-products/Presentation-Materials-on-tokenisation-of-SFC-authorised-investment-products",
+      "key_participants": [
+        "Securities and Futures Commission – Investment Products Division"
+      ],
+      "technical_stack": "Educational material on blockchain-based tokens, DLT and smart contracts for tokenising investment products and some real world assets.",
+      "description": "Slide deck explaining tokenisation concepts, SFC’s regulatory remit and key considerations for tokenising SFC-authorised investment products.",
+      "notes": "Linked from the SFC’s FAQs; complements the November 2023 tokenisation circulars."
     }
   ]
   
