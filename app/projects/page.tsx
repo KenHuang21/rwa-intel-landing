@@ -174,27 +174,48 @@ export default function ProjectsPage() {
       {!loading && !error && projects.length > 0 && (
         <div className="overflow-x-auto rounded-xl border border-slate-800/60 mt-4">
           <table className="w-full text-sm">
-            <thead className="bg-slate-900/60 border-b border-slate-800/60">
-              <tr>
-                <th className="px-4 py-3 text-left">Project</th>
-                <th className="px-4 py-3 text-left">Jurisdiction</th>
-                <th className="px-4 py-3 text-left">Category</th>
-                <th className="px-4 py-3 text-left">Issuer</th>
-                <th className="px-4 py-3 text-left">Status</th>
-              </tr>
-            </thead>
+          <thead className="bg-slate-900/60 border-b border-slate-800/60">
+  <tr>
+    <th className="px-4 py-3 text-left">Project</th>
+    <th className="px-4 py-3 text-left">Jurisdiction</th>
+    <th className="px-4 py-3 text-left">Category</th>
+    <th className="px-4 py-3 text-left">Issuer</th>
+    <th className="px-4 py-3 text-left">Status</th>
+    <th className="px-4 py-3 text-left">Announcement Date</th>
+  </tr>
+</thead>
+
             <tbody>
               {projects.map((p) => (
                 <tr
-                  key={p.project_id}
-                  className="border-b border-slate-800/40 hover:bg-slate-900/40"
-                >
-                  <td className="px-4 py-3 font-medium">{p.name}</td>
-                  <td className="px-4 py-3">{p.jurisdiction}</td>
-                  <td className="px-4 py-3">{p.category}</td>
-                  <td className="px-4 py-3">{p.issuer}</td>
-                  <td className="px-4 py-3">{p.status}</td>
-                </tr>
+                key={p.project_id}
+                className="border-b border-slate-800/40 hover:bg-slate-900/40 cursor-pointer"
+              >
+                <td className="px-4 py-3 font-medium">
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan-400 hover:underline"
+                  >
+                    {p.name}
+                  </a>
+              
+                  {/* Description under name */}
+                  {p.description && (
+                    <p className="text-slate-400 text-xs mt-1 max-w-xl leading-relaxed">
+                      {p.description}
+                    </p>
+                  )}
+                </td>
+              
+                <td className="px-4 py-3">{p.jurisdiction}</td>
+                <td className="px-4 py-3">{p.category}</td>
+                <td className="px-4 py-3">{p.issuer}</td>
+                <td className="px-4 py-3">{p.status}</td>
+                <td className="px-4 py-3">{p.announcement_date || "-"}</td>
+              </tr>
+              
               ))}
             </tbody>
           </table>
