@@ -1,0 +1,43 @@
+[
+    {
+      "project_id": "hkma_tokenised_green_bond_2024",
+      "name": "HKMA Tokenised Green Bond 2024",
+      "issuer": "Government of the Hong Kong Special Administrative Region",
+      "jurisdiction": "Hong Kong",
+      "category": "Tokenised Government Bond",
+      "asset_type": "Green Bond",
+      "regulator": ["HKMA"],
+      "status": "Live",
+      "blockchain": ["Permissioned DLT"],
+      "custodians": ["HSBC Orion"],
+      "infrastructure_partners": ["HSBC", "HKMA"],
+      "official_sources": [
+        "https://www.hkma.gov.hk/eng/news-and-media/press-releases/"
+      ],
+      "announced_date": "2024-02-20",
+      "go_live_date": "2024-02-20",
+      "description": "Tokenised green bond issuance under HKMA’s tokenisation initiative.",
+      "last_updated": "2025-11-18"
+    },
+    {
+      "project_id": "mas_project_guardian_fund_tokens",
+      "name": "MAS Project Guardian – Tokenised Fund Units Pilot",
+      "issuer": "Multiple financial institutions under MAS Project Guardian",
+      "jurisdiction": "Singapore",
+      "category": "Tokenised Fund",
+      "asset_type": "Unit Trust / Fund Units",
+      "regulator": ["MAS"],
+      "status": "Pilot",
+      "blockchain": ["Permissioned DLT", "Public EVM (pilot)"],
+      "custodians": [],
+      "infrastructure_partners": [],
+      "official_sources": [
+        "https://www.mas.gov.sg/news"
+      ],
+      "announced_date": "2023-11-01",
+      "go_live_date": null,
+      "description": "Tokenised fund and wealth pilots under MAS Project Guardian.",
+      "last_updated": "2025-11-18"
+    }
+  ]
+  
