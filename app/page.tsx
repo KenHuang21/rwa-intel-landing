@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { ArrowRight, CheckCircle2, LineChart, Database, Bot, Search, ShieldCheck } from "lucide-react";
+import projects from "../data/projects.json";
+
 
 // Tailwind-only, minimal dependencies. shadcn/ui is available if you prefer to swap in components later.
 // Replace the dummy onSubmit with your waitlist provider (Tally/Typeform/MailerLite). 
@@ -65,7 +67,11 @@ export default function LandingPage() {
             <div className="relative">
               <div className="rounded-3xl border border-slate-800 bg-slate-900/40 p-6 shadow-2xl ring-1 ring-white/5">
                 <div className="grid grid-cols-2 gap-4">
-                  <HeroCard title="Projects Indexed" value="102" subtitle="HK & SG pilots" />
+                <HeroCard
+  title="Projects Indexed"
+  value={String((projects as any[]).length)}
+  subtitle="HK & SG pilots"
+/>
                   <HeroCard title="Jurisdictions" value="14" subtitle="with RWA activity" />
                   <HeroCard title="Chains" value="11" subtitle="L1/L2 coverage" />
                   <HeroCard title="Custodians" value="25" subtitle="infra directory" />
