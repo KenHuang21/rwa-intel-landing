@@ -27,6 +27,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <nav className="w-full border-b border-slate-800/60 bg-slate-950">
+  <div className="mx-auto max-w-7xl px-4 h-14 flex items-center justify-between">
+    <div className="text-slate-300 font-semibold">RWA Intel</div>
+    <a
+      href="/projects"
+      className="text-slate-300 hover:text-white text-sm"
+    >
+      Projects
+    </a>
+  </div>
+</nav>
+
         {children}
       </body>
     </html>
