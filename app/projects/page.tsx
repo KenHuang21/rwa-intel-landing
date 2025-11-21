@@ -96,7 +96,7 @@ const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
   });
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16 min-h-screen">
+    <div className="overflow-x-auto rounded-xl border border-slate-800/60 mt-4 bg-slate-900/60">
       <h1 className="text-3xl font-bold mb-4">RWA Project Registry</h1>
       <p className="text-slate-400 text-sm mb-6">
         Filter by jurisdiction, category, and status. Data served from the public
@@ -185,7 +185,7 @@ const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
       {!loading && !error && projects.length > 0 && (
         <div className="overflow-x-auto rounded-xl border border-slate-800/60 mt-4">
           <table className="w-full text-sm">
-          <thead className="bg-slate-900/60 border-b border-slate-800/60">
+          <thead className="bg-slate-900/80 border-b border-slate-800/60">
   <tr>
     <th className="px-4 py-3 text-left">Project</th>
     <th className="px-4 py-3 text-left">Jurisdiction</th>
