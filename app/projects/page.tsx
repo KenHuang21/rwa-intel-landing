@@ -44,6 +44,7 @@ export default function ProjectsPage() {
   const [jurisdiction, setJurisdiction] = useState("All");
   const [category, setCategory] = useState("All");
   const [status, setStatus] = useState("All");
+const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
 
   async function fetchProjects() {
     try {
@@ -87,6 +88,12 @@ export default function ProjectsPage() {
     fetchProjects();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const sortedProjects = [...projects].sort((a, b) => {
+    const da = new Date(a.announcement_date || 0).getTime();
+    const db = new Date(b.announcement_date || 0).getTime();
+    return sortDir === "asc" ? da - db : db - da;
+  });
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-16 text-slate-100 bg-slate-950 min-h-screen">
@@ -185,12 +192,20 @@ export default function ProjectsPage() {
     <th className="px-4 py-3 text-left">Category</th>
     <th className="px-4 py-3 text-left">Issuer</th>
     <th className="px-4 py-3 text-left">Status</th>
-    <th className="px-4 py-3 text-left">Announcement Date</th>
+    <th
+  className="px-4 py-3 text-left cursor-pointer select-none hover:text-cyan-400"
+  onClick={() => setSortDir(sortDir === "asc" ? "desc" : "asc")}
+>
+  Announcement Date
+  <span className="ml-1 text-xs opacity-70">
+    {sortDir === "asc" ? "▲" : "▼"}
+  </span>
+</th>
   </tr>
 </thead>
 
             <tbody>
-              {projects.map((p) => (
+              {sortedProjects.map((p) => (
                 <tr
                 key={p.project_id}
                 className="border-b border-slate-800/40 hover:bg-slate-900/40 cursor-pointer"
