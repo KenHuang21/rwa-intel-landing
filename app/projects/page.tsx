@@ -9,7 +9,11 @@ type Project = {
   category: string;
   issuer: string;
   status: string;
+  announcement_date?: string;
+  url?: string;
+  description?: string;
 };
+
 
 const JURISDICTION_OPTIONS = [
   "All",
@@ -193,13 +197,14 @@ export default function ProjectsPage() {
               >
                 <td className="px-4 py-3 font-medium">
                   <a
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-400 hover:underline"
-                  >
-                    {p.name}
-                  </a>
+  href={p.url || "#"}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-cyan-400 hover:underline"
+>
+  {p.name}
+</a>
+
               
                   {/* Description under name */}
                   {p.description && (
