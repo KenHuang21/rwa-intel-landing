@@ -94,12 +94,7 @@ export default function ProjectsPage() {
   RWA Project Registry
 </h1>
         <p className="mt-2 text-sm text-slate-400">
-          Filter by jurisdiction, category, and status. Data served from the
-          public
-          <code className="ml-1 rounded bg-slate-900 px-1.5 py-0.5 text-xs text-slate-100 border border-slate-700">
-            /api/projects
-          </code>{" "}
-          endpoint.
+          Discover verified tokenisation pilots, issuances, and regulatory developments.
         </p>
       </div>
 
