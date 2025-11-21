@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 type Project = {
   project_id: string;
@@ -216,20 +217,18 @@ export default function ProjectsPage() {
                   className="border-t border-slate-800/80 hover:bg-slate-900/80 transition-colors"
                 >
                   <td className="px-4 py-3 align-top">
-                    <a
-                      href={p.url || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium text-cyan-400 hover:text-cyan-300 hover:underline"
-                    >
-                      {p.name}
-                    </a>
-                    {p.description && (
-                      <p className="mt-1 max-w-2xl text-xs leading-relaxed text-slate-400">
-                        {p.description}
-                      </p>
-                    )}
-                  </td>
+  <Link
+    href={`/projects/${p.project_id}`}
+    className="font-medium text-cyan-400 hover:text-cyan-300 hover:underline"
+  >
+    {p.name}
+  </Link>
+  {p.description && (
+    <p className="mt-1 max-w-2xl text-xs leading-relaxed text-slate-400">
+      {p.description}
+    </p>
+  )}
+</td>
                   <td className="px-4 py-3 align-top text-slate-200">
                     {p.jurisdiction}
                   </td>
