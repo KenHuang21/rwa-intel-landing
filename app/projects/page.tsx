@@ -90,9 +90,9 @@ export default function ProjectsPage() {
     <div className="mx-auto max-w-7xl px-4 py-16">
       {/* Title + subtitle */}
       <div className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight text-slate-50">
-          RWA Project Registry
-        </h1>
+        <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
+  RWA Project Registry
+</h1>
         <p className="mt-2 text-sm text-slate-400">
           Filter by jurisdiction, category, and status. Data served from the
           public
