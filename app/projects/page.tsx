@@ -14,7 +14,6 @@ type Project = {
   description?: string;
 };
 
-
 const JURISDICTION_OPTIONS = [
   "All",
   "Hong Kong",
@@ -22,16 +21,18 @@ const JURISDICTION_OPTIONS = [
   "EU",
   "UAE",
   "Switzerland",
-  "Other"
+  "Other",
 ];
 
 const CATEGORY_OPTIONS = [
   "All",
-  "Tokenised Government Bond",
-  "Tokenised Fund",
+  "Tokenised Bonds",
+  "Tokenised Securities Infrastructure",
+  "Digital Securities Licensing",
+  "Misc Regulatory",
   "Stablecoin",
   "Real Estate",
-  "Other"
+  "Other",
 ];
 
 const STATUS_OPTIONS = ["All", "Live", "Pilot", "Completed", "Announced"];
@@ -44,7 +45,7 @@ export default function ProjectsPage() {
   const [jurisdiction, setJurisdiction] = useState("All");
   const [category, setCategory] = useState("All");
   const [status, setStatus] = useState("All");
-const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
 
   async function fetchProjects() {
     try {
@@ -53,26 +54,16 @@ const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
 
       const params = new URLSearchParams();
 
-      if (jurisdiction !== "All") {
-        params.append("jurisdiction", jurisdiction);
-      }
-      if (category !== "All") {
-        params.append("category", category);
-      }
-      if (status !== "All") {
-        params.append("status", status);
-      }
+      if (jurisdiction !== "All") params.append("jurisdiction", jurisdiction);
+      if (category !== "All") params.append("category", category);
+      if (status !== "All") params.append("status", status);
 
       let url = "/api/projects";
       const query = params.toString();
-      if (query) {
-        url += `?${query}`;
-      }
+      if (query) url += `?${query}`;
 
       const res = await fetch(url);
-      if (!res.ok) {
-        throw new Error(`Request failed: ${res.status}`);
-      }
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
 
       const data = await res.json();
       setProjects(data);
@@ -96,26 +87,32 @@ const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
   });
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-slate-800/60 mt-4 bg-slate-900/60">
-      <h1 className="text-3xl font-bold mb-4">RWA Project Registry</h1>
-      <p className="text-slate-400 text-sm mb-6">
-        Filter by jurisdiction, category, and status. Data served from the public
-        <code className="ml-1 bg-slate-900 px-1.5 py-0.5 rounded text-xs border border-slate-700">
-          /api/projects
-        </code>{" "}
-        endpoint.
-      </p>
+    <div className="mx-auto max-w-7xl px-4 py-16">
+      {/* Title + subtitle */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-semibold tracking-tight text-slate-50">
+          RWA Project Registry
+        </h1>
+        <p className="mt-2 text-sm text-slate-400">
+          Filter by jurisdiction, category, and status. Data served from the
+          public
+          <code className="ml-1 rounded bg-slate-900 px-1.5 py-0.5 text-xs text-slate-100 border border-slate-700">
+            /api/projects
+          </code>{" "}
+          endpoint.
+        </p>
+      </div>
 
       {/* Filters */}
       <div className="mb-6 grid gap-4 md:grid-cols-4 items-end">
         <div>
-          <label className="block text-xs font-medium text-slate-400 mb-1">
+          <label className="mb-1 block text-xs font-medium text-slate-400">
             Jurisdiction
           </label>
           <select
             value={jurisdiction}
             onChange={(e) => setJurisdiction(e.target.value)}
-            className="w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-sm text-slate-100"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
           >
             {JURISDICTION_OPTIONS.map((opt) => (
               <option key={opt} value={opt}>
@@ -126,13 +123,13 @@ const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-400 mb-1">
+          <label className="mb-1 block text-xs font-medium text-slate-400">
             Category
           </label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-sm text-slate-100"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
           >
             {CATEGORY_OPTIONS.map((opt) => (
               <option key={opt} value={opt}>
@@ -143,13 +140,13 @@ const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-400 mb-1">
+          <label className="mb-1 block text-xs font-medium text-slate-400">
             Status
           </label>
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-sm text-slate-100"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
           >
             {STATUS_OPTIONS.map((opt) => (
               <option key={opt} value={opt}>
@@ -163,79 +160,97 @@ const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
           <button
             type="button"
             onClick={fetchProjects}
-            className="w-full md:w-auto inline-flex items-center justify-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-400 transition-colors"
+            className="inline-flex w-full items-center justify-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow hover:bg-cyan-400 transition-colors md:w-auto"
           >
             Apply Filters
           </button>
         </div>
       </div>
 
+      {/* States */}
       {loading && (
-        <p className="text-slate-400 text-sm">Loading projects...</p>
+        <p className="text-sm text-slate-400">Loading projects...</p>
       )}
 
       {error && !loading && (
-        <p className="text-red-400 text-sm mb-4">Error: {error}</p>
+        <p className="mb-4 text-sm text-red-400">Error: {error}</p>
       )}
 
-      {!loading && !error && projects.length === 0 && (
-        <p className="text-slate-400 text-sm">No projects found.</p>
+      {!loading && !error && sortedProjects.length === 0 && (
+        <p className="text-sm text-slate-400">No projects found.</p>
       )}
 
-      {!loading && !error && projects.length > 0 && (
-        <div className="overflow-x-auto rounded-xl border border-slate-800/60 mt-4">
+      {/* Table */}
+      {!loading && !error && sortedProjects.length > 0 && (
+        <div className="mt-4 overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/80 shadow-lg">
           <table className="w-full text-sm">
-          <thead className="bg-slate-900/80 border-b border-slate-800/60">
-  <tr>
-    <th className="px-4 py-3 text-left">Project</th>
-    <th className="px-4 py-3 text-left">Jurisdiction</th>
-    <th className="px-4 py-3 text-left">Category</th>
-    <th className="px-4 py-3 text-left">Issuer</th>
-    <th className="px-4 py-3 text-left">Status</th>
-    <th
-  className="px-4 py-3 text-left cursor-pointer select-none hover:text-cyan-400"
-  onClick={() => setSortDir(sortDir === "asc" ? "desc" : "asc")}
->
-  Announcement Date
-  <span className="ml-1 text-xs opacity-70">
-    {sortDir === "asc" ? "▲" : "▼"}
-  </span>
-</th>
-  </tr>
-</thead>
-
+            <thead className="sticky top-0 bg-slate-950/95 border-b border-slate-800">
+              <tr>
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+                  Project
+                </th>
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+                  Jurisdiction
+                </th>
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+                  Category
+                </th>
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+                  Issuer
+                </th>
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+                  Status
+                </th>
+                <th
+                  className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400 cursor-pointer select-none"
+                  onClick={() =>
+                    setSortDir(sortDir === "asc" ? "desc" : "asc")
+                  }
+                >
+                  Announcement Date{" "}
+                  <span className="ml-1 text-[10px]">
+                    {sortDir === "asc" ? "▲" : "▼"}
+                  </span>
+                </th>
+              </tr>
+            </thead>
             <tbody>
               {sortedProjects.map((p) => (
                 <tr
-                key={p.project_id}
-                className="border-b border-slate-800/40 hover:bg-slate-900/40 cursor-pointer"
-              >
-                <td className="px-4 py-3 font-medium">
-                  <a
-  href={p.url || "#"}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-cyan-400 hover:underline"
->
-  {p.name}
-</a>
-
-              
-                  {/* Description under name */}
-                  {p.description && (
-                    <p className="text-slate-400 text-xs mt-1 max-w-xl leading-relaxed">
-                      {p.description}
-                    </p>
-                  )}
-                </td>
-              
-                <td className="px-4 py-3">{p.jurisdiction}</td>
-                <td className="px-4 py-3">{p.category}</td>
-                <td className="px-4 py-3">{p.issuer}</td>
-                <td className="px-4 py-3">{p.status}</td>
-                <td className="px-4 py-3">{p.announcement_date || "-"}</td>
-              </tr>
-              
+                  key={p.project_id}
+                  className="border-t border-slate-800/80 hover:bg-slate-900/80 transition-colors"
+                >
+                  <td className="px-4 py-3 align-top">
+                    <a
+                      href={p.url || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-cyan-400 hover:text-cyan-300 hover:underline"
+                    >
+                      {p.name}
+                    </a>
+                    {p.description && (
+                      <p className="mt-1 max-w-2xl text-xs leading-relaxed text-slate-400">
+                        {p.description}
+                      </p>
+                    )}
+                  </td>
+                  <td className="px-4 py-3 align-top text-slate-200">
+                    {p.jurisdiction}
+                  </td>
+                  <td className="px-4 py-3 align-top text-slate-200">
+                    {p.category}
+                  </td>
+                  <td className="px-4 py-3 align-top text-slate-200">
+                    {p.issuer}
+                  </td>
+                  <td className="px-4 py-3 align-top text-slate-200">
+                    {p.status}
+                  </td>
+                  <td className="px-4 py-3 align-top text-slate-200">
+                    {p.announcement_date || "-"}
+                  </td>
+                </tr>
               ))}
             </tbody>
           </table>
