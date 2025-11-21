@@ -96,7 +96,7 @@ const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
   });
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16 text-slate-100 bg-slate-950 min-h-screen">
+    <div className="mx-auto max-w-7xl px-4 py-16 min-h-screen">
       <h1 className="text-3xl font-bold mb-4">RWA Project Registry</h1>
       <p className="text-slate-400 text-sm mb-6">
         Filter by jurisdiction, category, and status. Data served from the public
