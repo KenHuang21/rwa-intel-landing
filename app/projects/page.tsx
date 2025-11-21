@@ -47,34 +47,38 @@ export default function ProjectsPage() {
   const [category, setCategory] = useState("All");
   const [status, setStatus] = useState("All");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+  const [search, setSearch] = useState("");
+
 
   async function fetchProjects() {
-    try {
-      setLoading(true);
-      setError(null);
+  try {
+    setLoading(true);
+    setError(null);
 
-      const params = new URLSearchParams();
+    const params = new URLSearchParams();
 
-      if (jurisdiction !== "All") params.append("jurisdiction", jurisdiction);
-      if (category !== "All") params.append("category", category);
-      if (status !== "All") params.append("status", status);
+    if (jurisdiction !== "All") params.append("jurisdiction", jurisdiction);
+    if (category !== "All") params.append("category", category);
+    if (status !== "All") params.append("status", status);
+    if (search.trim() !== "") params.append("q", search.trim());
 
-      let url = "/api/projects";
-      const query = params.toString();
-      if (query) url += `?${query}`;
+    let url = "/api/projects";
+    const query = params.toString();
+    if (query) url += `?${query}`;
 
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Request failed: ${res.status}`);
 
-      const data = await res.json();
-      setProjects(data);
-    } catch (err: any) {
-      setError(err.message ?? "Failed to load projects");
-      setProjects([]);
-    } finally {
-      setLoading(false);
-    }
+    const data = await res.json();
+    setProjects(data);
+  } catch (err: any) {
+    setError(err.message ?? "Failed to load projects");
+    setProjects([]);
+  } finally {
+    setLoading(false);
   }
+}
+
 
   useEffect(() => {
     fetchProjects();
@@ -100,68 +104,89 @@ export default function ProjectsPage() {
       </div>
 
       {/* Filters */}
-      <div className="mb-6 grid gap-4 md:grid-cols-4 items-end">
-        <div>
-          <label className="mb-1 block text-xs font-medium text-slate-400">
-            Jurisdiction
-          </label>
-          <select
-            value={jurisdiction}
-            onChange={(e) => setJurisdiction(e.target.value)}
-            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
-          >
-            {JURISDICTION_OPTIONS.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
-        </div>
+     <div className="mb-6 space-y-4">
+  {/* Row 1: Jurisdiction / Category / Status */}
+  <div className="grid gap-4 md:grid-cols-3">
+    <div>
+      <label className="mb-1 block text-xs font-medium text-slate-400">
+        Jurisdiction
+      </label>
+      <select
+        value={jurisdiction}
+        onChange={(e) => setJurisdiction(e.target.value)}
+        className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
+      >
+        {JURISDICTION_OPTIONS.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+    </div>
 
-        <div>
-          <label className="mb-1 block text-xs font-medium text-slate-400">
-            Category
-          </label>
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
-          >
-            {CATEGORY_OPTIONS.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
-        </div>
+    <div>
+      <label className="mb-1 block text-xs font-medium text-slate-400">
+        Category
+      </label>
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
+      >
+        {CATEGORY_OPTIONS.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+    </div>
 
-        <div>
-          <label className="mb-1 block text-xs font-medium text-slate-400">
-            Status
-          </label>
-          <select
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
-          >
-            {STATUS_OPTIONS.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
-        </div>
+    <div>
+      <label className="mb-1 block text-xs font-medium text-slate-400">
+        Status
+      </label>
+      <select
+        value={status}
+        onChange={(e) => setStatus(e.target.value)}
+        className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
+      >
+        {STATUS_OPTIONS.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+    </div>
+  </div>
 
-        <div className="flex md:justify-end">
-          <button
-            type="button"
-            onClick={fetchProjects}
-            className="inline-flex w-full items-center justify-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow hover:bg-cyan-400 transition-colors md:w-auto"
-          >
-            Apply Filters
-          </button>
-        </div>
-      </div>
+  {/* Row 2: Search + Apply button */}
+  <div className="grid gap-4 md:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] items-end">
+    <div>
+      <label className="mb-1 block text-xs font-medium text-slate-400">
+        Search
+      </label>
+      <input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search by project, issuer, jurisdiction, category..."
+        className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
+      />
+    </div>
+
+    <div className="flex md:justify-end">
+      <button
+        type="button"
+        onClick={fetchProjects}
+        className="inline-flex w-full items-center justify-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow hover:bg-cyan-400 transition-colors md:w-auto"
+      >
+        Apply Filters &amp; Search
+      </button>
+    </div>
+  </div>
+</div>
+
+
 
       {/* States */}
       {loading && (
