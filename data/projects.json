@@ -227,6 +227,148 @@
       "technical_stack": "Educational material on blockchain-based tokens, DLT and smart contracts for tokenising investment products and some real world assets.",
       "description": "Slide deck explaining tokenisation concepts, SFC’s regulatory remit and key considerations for tokenising SFC-authorised investment products.",
       "notes": "Linked from the SFC’s FAQs; complements the November 2023 tokenisation circulars."
-    }
+    },
+  {
+    "project_id": "sg_ubs_tokenised_vcc_fund_pilot_2023",
+    "name": "UBS Tokenised VCC Fund Pilot (Project Guardian)",
+    "jurisdiction": "Singapore",
+    "category": "Tokenised Funds",
+    "status": "Pilot",
+    "issuer": "UBS Asset Management (Singapore) Ltd",
+    "regulator": "MAS",
+    "announcement_date": "2023-09-27",
+    "url": "https://www.ubs.com/global/en/media/display-page-ndp/en-20230927-first-blockchain-native.html",
+    "description": "UBS AM’s first live pilot of a tokenised Variable Capital Company (VCC) fund in Singapore under MAS’ Project Guardian, exploring on-chain fund units for institutional distribution.",
+    "technical_stack": "Blockchain-native VCC fund issued on a permissioned DLT platform, integrated with institutional custody and distribution infrastructure.",
+    "key_participants": [
+      "UBS Asset Management",
+      "Monetary Authority of Singapore"
+    ],
+    "notes": "Official UBS media release states the pilot is part of a wider VCC umbrella for bringing real-world assets on-chain under Project Guardian."
+  },
+  {
+    "project_id": "sg_project_guardian_first_defi_pilot_2022",
+    "name": "Project Guardian – First Industry DeFi Pilot (Tokenised Bonds and Deposits)",
+    "jurisdiction": "Singapore",
+    "category": "Tokenised Securities Infrastructure",
+    "status": "Pilot",
+    "issuer": "JP Morgan, DBS Bank, SBI Digital Asset Holdings",
+    "regulator": "MAS",
+    "announcement_date": "2022-11-02",
+    "url": "https://www.mas.gov.sg/news/media-releases/2022/first-industry-pilot-for-digital-asset-and-decentralised-finance-goes-live",
+    "description": "First Project Guardian industry pilot using tokenised Singapore Government Securities bonds, Japanese Government Bonds and tokenised deposits to execute DeFi-style borrowing and lending on a public blockchain.",
+    "technical_stack": "Permissioned DeFi protocol on a public blockchain using tokenised government bonds and tokenised bank deposits, with regulated financial institutions acting as trust anchors.",
+    "key_participants": [
+      "Monetary Authority of Singapore",
+      "DBS Bank",
+      "JP Morgan",
+      "SBI Digital Asset Holdings"
+    ],
+    "notes": "MAS media release describes this as the first live pilot to test DeFi applications in wholesale funding markets using tokenised bonds and deposits."
+  },
+  {
+    "project_id": "sg_project_guardian_expanded_pilots_2023",
+    "name": "Project Guardian – Expanded Asset Tokenisation Pilots",
+    "jurisdiction": "Singapore",
+    "category": "Tokenised Securities Infrastructure",
+    "status": "Pilot",
+    "issuer": "Project Guardian Industry Group",
+    "regulator": "MAS",
+    "announcement_date": "2023-11-15",
+    "url": "https://www.mas.gov.sg/news/media-releases/2023/mas-partners-financial-industry-to-expand-asset-tokenisation-initiatives",
+    "description": "MAS announces an expanded set of Project Guardian pilots, including tokenised funds, tokenised bonds, and tokenised bank liabilities across multiple institutions and use cases.",
+    "technical_stack": "Multiple DLT implementations for tokenised funds, fixed income, and FX, coordinated under a common MAS-led Project Guardian framework.",
+    "key_participants": [
+      "Monetary Authority of Singapore",
+      "DBS Bank",
+      "JP Morgan",
+      "SBI Digital Asset Holdings",
+      "UBS",
+      "Standard Chartered",
+      "HSBC",
+      "UOB",
+      "Marketnode",
+      "Other Project Guardian participants"
+    ],
+    "notes": "MAS media release summarises five new asset tokenisation pilots, building on earlier Project Guardian work and widening coverage across funds, bonds and bank liabilities."
+  },
+  {
+    "project_id": "sg_hsbc_uob_marketnode_structured_product_pilot_2023",
+    "name": "HSBC–UOB–Marketnode Digitally Native Structured Product Pilot",
+    "jurisdiction": "Singapore",
+    "category": "Tokenised Structured Products",
+    "status": "Pilot",
+    "issuer": "HSBC and UOB via Marketnode",
+    "regulator": "MAS",
+    "announcement_date": "2023-06-26",
+    "url": "https://www.marketnode.com/media-centre/mas-proposes-framework-for-digital-asset-networks",
+    "description": "Technical pilot by HSBC, UOB and Marketnode on issuance and distribution of a digitally native structured product, referenced by MAS in its digital asset network framework work.",
+    "technical_stack": "Digitally native structured note issued and managed on Marketnode’s DLT-based infrastructure, with connectivity to existing market and bank systems.",
+    "key_participants": [
+      "Monetary Authority of Singapore",
+      "HSBC",
+      "UOB",
+      "Marketnode"
+    ],
+    "notes": "Marketnode media centre note, cited alongside MAS’ proposed digital asset network framework, highlights a pilot for digitally native structured products."
+  },
+  {
+    "project_id": "sg_global_asia_digital_bond_grant_scheme_g_adbgs",
+    "name": "Global-Asia Digital Bond Grant Scheme (G-ADBGS)",
+    "jurisdiction": "Singapore",
+    "category": "Tokenised Securities Infrastructure",
+    "status": "Live",
+    "issuer": "Monetary Authority of Singapore",
+    "regulator": "MAS",
+    "announcement_date": "2025-01-15",
+    "url": "https://www.mas.gov.sg/schemes-and-initiatives/global-asia-digital-bond-grant-scheme",
+    "description": "MAS grant scheme to catalyse issuance and broader market adoption of digital bonds in Singapore by defraying issuance and listing-related costs for eligible digital bond deals.",
+    "technical_stack": "Technology-agnostic grant framework supporting digital bond transactions executed on DLT or similar digital securities infrastructure, listed on SGX or recognised venues.",
+    "key_participants": [
+      "Monetary Authority of Singapore",
+      "Eligible digital bond issuers",
+      "Singapore Exchange"
+    ],
+    "notes": "MAS scheme page and legal analysis describe G-ADBGS as a financial incentive to promote digital bond issuance and adoption in Singapore."
+  },
+  {
+    "project_id": "sg_sgx_digital_bond_listing_segment",
+    "name": "SGX Digital Bond Listing Segment",
+    "jurisdiction": "Singapore",
+    "category": "Tokenised Bonds",
+    "status": "Live",
+    "issuer": "Various Issuers via Singapore Exchange",
+    "regulator": "MAS",
+    "announcement_date": "",
+    "url": "https://www.sgx.com/fixed-income/digital-bond",
+    "description": "SGX’s listing segment for digital and tokenised bonds, integrating digital bond issuance into its existing debt securities listing framework and processes.",
+    "technical_stack": "Digital bond listings supported through SGX’s fixed-income platform and connected digital securities infrastructure for issuance, depository and settlement.",
+    "key_participants": [
+      "Singapore Exchange",
+      "Monetary Authority of Singapore",
+      "Digital bond issuers"
+    ],
+    "notes": "SGX fixed-income page explains how digital bonds are incorporated into the debt listing platform to support broader adoption of tokenised fixed-income instruments."
+  },
+  {
+    "project_id": "sg_mas_commercialisation_of_asset_tokenisation_2024",
+    "name": "MAS Commercialisation of Asset Tokenisation Initiatives",
+    "jurisdiction": "Singapore",
+    "category": "Tokenised Securities Infrastructure",
+    "status": "Live",
+    "issuer": "Monetary Authority of Singapore",
+    "regulator": "MAS",
+    "announcement_date": "2024-11-04",
+    "url": "https://www.mas.gov.sg/news/media-releases/2024/mas-announces-plans-to-support-commercialisation-of-asset-tokenisation",
+    "description": "MAS initiatives to deepen liquidity in tokenised markets, develop interoperability for tokenised asset networks, and advance fund tokenisation and tokenised money use cases toward commercial scale.",
+    "technical_stack": "Policy and infrastructure roadmap covering composable token taxonomies, interoperable digital asset networks, and tokenised fund and money use cases.",
+    "key_participants": [
+      "Monetary Authority of Singapore",
+      "Project Guardian Industry Group",
+      "Singapore financial institutions"
+    ],
+    "notes": "MAS media release sets out a comprehensive strategy to move tokenisation pilots under Project Guardian towards commercial adoption across funds, bonds and tokenised money."
+  }
+
   ]
   
