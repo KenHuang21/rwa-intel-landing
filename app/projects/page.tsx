@@ -51,33 +51,33 @@ export default function ProjectsPage() {
 
 
   async function fetchProjects() {
-  try {
-    setLoading(true);
-    setError(null);
+    try {
+      setLoading(true);
+      setError(null);
 
-    const params = new URLSearchParams();
+      const params = new URLSearchParams();
 
-    if (jurisdiction !== "All") params.append("jurisdiction", jurisdiction);
-    if (category !== "All") params.append("category", category);
-    if (status !== "All") params.append("status", status);
-    if (search.trim() !== "") params.append("q", search.trim());
+      if (jurisdiction !== "All") params.append("jurisdiction", jurisdiction);
+      if (category !== "All") params.append("category", category);
+      if (status !== "All") params.append("status", status);
+      if (search.trim() !== "") params.append("q", search.trim());
 
-    let url = "/api/projects";
-    const query = params.toString();
-    if (query) url += `?${query}`;
+      let url = "/api/projects";
+      const query = params.toString();
+      if (query) url += `?${query}`;
 
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
 
-    const data = await res.json();
-    setProjects(data);
-  } catch (err: any) {
-    setError(err.message ?? "Failed to load projects");
-    setProjects([]);
-  } finally {
-    setLoading(false);
+      const data = await res.json();
+      setProjects(data);
+    } catch (err: any) {
+      setError(err.message ?? "Failed to load projects");
+      setProjects([]);
+    } finally {
+      setLoading(false);
+    }
   }
-}
 
 
   useEffect(() => {
@@ -92,189 +92,216 @@ export default function ProjectsPage() {
   });
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16">
-      {/* Title + subtitle */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
-  RWA Project Registry
-</h1>
-        <p className="mt-2 text-sm text-slate-400">
-          Discover verified tokenisation pilots, issuances, and regulatory developments.
-        </p>
-      </div>
-
-      {/* Filters */}
-     <div className="mb-6 space-y-4">
-  {/* Row 1: Jurisdiction / Category / Status */}
-  <div className="grid gap-4 md:grid-cols-3">
-    <div>
-      <label className="mb-1 block text-xs font-medium text-slate-400">
-        Jurisdiction
-      </label>
-      <select
-        value={jurisdiction}
-        onChange={(e) => setJurisdiction(e.target.value)}
-        className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
-      >
-        {JURISDICTION_OPTIONS.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
-          </option>
-        ))}
-      </select>
-    </div>
-
-    <div>
-      <label className="mb-1 block text-xs font-medium text-slate-400">
-        Category
-      </label>
-      <select
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
-      >
-        {CATEGORY_OPTIONS.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
-          </option>
-        ))}
-      </select>
-    </div>
-
-    <div>
-      <label className="mb-1 block text-xs font-medium text-slate-400">
-        Status
-      </label>
-      <select
-        value={status}
-        onChange={(e) => setStatus(e.target.value)}
-        className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
-      >
-        {STATUS_OPTIONS.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
-          </option>
-        ))}
-      </select>
-    </div>
-  </div>
-
-  {/* Row 2: Search + Apply button */}
-  <div className="grid gap-4 md:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] items-end">
-    <div>
-      <label className="mb-1 block text-xs font-medium text-slate-400">
-        Search
-      </label>
-      <input
-        type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search by project, issuer, jurisdiction, category..."
-        className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
-      />
-    </div>
-
-    <div className="flex md:justify-end">
-      <button
-        type="button"
-        onClick={fetchProjects}
-        className="inline-flex w-full items-center justify-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow hover:bg-cyan-400 transition-colors md:w-auto"
-      >
-        Apply Filters &amp; Search
-      </button>
-    </div>
-  </div>
-</div>
-
-
-
-      {/* States */}
-      {loading && (
-        <p className="text-sm text-slate-400">Loading projects...</p>
-      )}
-
-      {error && !loading && (
-        <p className="mb-4 text-sm text-red-400">Error: {error}</p>
-      )}
-
-      {!loading && !error && sortedProjects.length === 0 && (
-        <p className="text-sm text-slate-400">No projects found.</p>
-      )}
-
-      {/* Table */}
-      {!loading && !error && sortedProjects.length > 0 && (
-        <div className="mt-4 overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/80 shadow-lg">
-          <table className="w-full text-sm">
-            <thead className="sticky top-0 bg-slate-950/95 border-b border-slate-800">
-              <tr>
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
-                  Project
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
-                  Jurisdiction
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
-                  Category
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
-                  Issuer
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
-                  Status
-                </th>
-                <th
-                  className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400 cursor-pointer select-none"
-                  onClick={() =>
-                    setSortDir(sortDir === "asc" ? "desc" : "asc")
-                  }
-                >
-                  Announcement Date{" "}
-                  <span className="ml-1 text-[10px]">
-                    {sortDir === "asc" ? "▲" : "▼"}
-                  </span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedProjects.map((p) => (
-                <tr
-                  key={p.project_id}
-                  className="border-t border-slate-800/80 hover:bg-slate-900/80 transition-colors"
-                >
-                  <td className="px-4 py-3 align-top">
-  <Link
-    href={`/projects/${p.project_id}`}
-    className="font-medium text-cyan-400 hover:text-cyan-300 hover:underline"
-  >
-    {p.name}
-  </Link>
-  {p.description && (
-    <p className="mt-1 max-w-2xl text-xs leading-relaxed text-slate-400">
-      {p.description}
-    </p>
-  )}
-</td>
-                  <td className="px-4 py-3 align-top text-slate-200">
-                    {p.jurisdiction}
-                  </td>
-                  <td className="px-4 py-3 align-top text-slate-200">
-                    {p.category}
-                  </td>
-                  <td className="px-4 py-3 align-top text-slate-200">
-                    {p.issuer}
-                  </td>
-                  <td className="px-4 py-3 align-top text-slate-200">
-                    {p.status}
-                  </td>
-                  <td className="px-4 py-3 align-top text-slate-200">
-                    {p.announcement_date || "-"}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="mx-auto max-w-7xl px-4 py-16">
+        {/* Title + subtitle */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-semibold tracking-tight text-white">
+            RWA Project Registry
+          </h1>
+          <p className="mt-2 text-sm text-slate-400">
+            Discover verified tokenisation pilots, issuances, and regulatory developments.
+          </p>
         </div>
-      )}
+
+        {/* Dashboard Summary */}
+        <div className="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div className="rounded-2xl bg-slate-900/50 p-4 ring-1 ring-slate-800">
+            <div className="text-xs font-medium uppercase tracking-wider text-slate-500">Total Projects</div>
+            <div className="mt-1 text-2xl font-semibold text-white">{projects.length > 0 ? projects.length : "-"}</div>
+          </div>
+          <div className="rounded-2xl bg-slate-900/50 p-4 ring-1 ring-slate-800">
+            <div className="text-xs font-medium uppercase tracking-wider text-slate-500">Jurisdictions</div>
+            <div className="mt-1 text-2xl font-semibold text-white">14</div>
+          </div>
+          <div className="rounded-2xl bg-slate-900/50 p-4 ring-1 ring-slate-800">
+            <div className="text-xs font-medium uppercase tracking-wider text-slate-500">Live Pilots</div>
+            <div className="mt-1 text-2xl font-semibold text-cyan-400">8</div>
+          </div>
+          <div className="rounded-2xl bg-slate-900/50 p-4 ring-1 ring-slate-800">
+            <div className="text-xs font-medium uppercase tracking-wider text-slate-500">Last Update</div>
+            <div className="mt-1 text-2xl font-semibold text-white">Today</div>
+          </div>
+        </div>
+
+        {/* Filters */}
+        <div className="mb-6 space-y-4 rounded-2xl bg-slate-900/30 p-6 ring-1 ring-slate-800">
+          {/* Row 1: Jurisdiction / Category / Status */}
+          <div className="grid gap-4 md:grid-cols-3">
+            <div>
+              <label className="mb-1 block text-xs font-medium text-slate-400">
+                Jurisdiction
+              </label>
+              <select
+                value={jurisdiction}
+                onChange={(e) => setJurisdiction(e.target.value)}
+                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
+              >
+                {JURISDICTION_OPTIONS.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="mb-1 block text-xs font-medium text-slate-400">
+                Category
+              </label>
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
+              >
+                {CATEGORY_OPTIONS.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="mb-1 block text-xs font-medium text-slate-400">
+                Status
+              </label>
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
+              >
+                {STATUS_OPTIONS.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Row 2: Search + Apply button */}
+          <div className="grid gap-4 md:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] items-end">
+            <div>
+              <label className="mb-1 block text-xs font-medium text-slate-400">
+                Search
+              </label>
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search by project, issuer, jurisdiction, category..."
+                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
+              />
+            </div>
+
+            <div className="flex md:justify-end">
+              <button
+                type="button"
+                onClick={fetchProjects}
+                className="inline-flex w-full items-center justify-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow hover:bg-cyan-400 transition-colors md:w-auto"
+              >
+                Apply Filters &amp; Search
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+
+        {/* States */}
+        {loading && (
+          <p className="text-sm text-slate-400">Loading projects...</p>
+        )}
+
+        {error && !loading && (
+          <p className="mb-4 text-sm text-red-400">Error: {error}</p>
+        )}
+
+        {!loading && !error && sortedProjects.length === 0 && (
+          <p className="text-sm text-slate-400">No projects found.</p>
+        )}
+
+        {/* Table */}
+        {!loading && !error && sortedProjects.length > 0 && (
+          <div className="mt-4 overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/40 shadow-lg">
+            <table className="w-full text-sm">
+              <thead className="bg-slate-950/50 border-b border-slate-800">
+                <tr>
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+                    Project
+                  </th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+                    Jurisdiction
+                  </th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+                    Category
+                  </th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+                    Issuer
+                  </th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">
+                    Status
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400 cursor-pointer select-none"
+                    onClick={() =>
+                      setSortDir(sortDir === "asc" ? "desc" : "asc")
+                    }
+                  >
+                    Announcement Date{" "}
+                    <span className="ml-1 text-[10px]">
+                      {sortDir === "asc" ? "▲" : "▼"}
+                    </span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800/60">
+                {sortedProjects.map((p) => (
+                  <tr
+                    key={p.project_id}
+                    className="hover:bg-slate-900/50 transition-colors"
+                  >
+                    <td className="px-4 py-3 align-top">
+                      <Link
+                        href={`/projects/${p.project_id}`}
+                        className="font-medium text-cyan-400 hover:text-cyan-300 hover:underline"
+                      >
+                        {p.name}
+                      </Link>
+                      {p.description && (
+                        <p className="mt-1 max-w-2xl text-xs leading-relaxed text-slate-400">
+                          {p.description}
+                        </p>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 align-top text-slate-300">
+                      {p.jurisdiction}
+                    </td>
+                    <td className="px-4 py-3 align-top text-slate-300">
+                      {p.category}
+                    </td>
+                    <td className="px-4 py-3 align-top text-slate-300">
+                      {p.issuer}
+                    </td>
+                    <td className="px-4 py-3 align-top text-slate-300">
+                      <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${p.status === 'Live' ? 'bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500/20' :
+                          p.status === 'Pilot' ? 'bg-amber-500/10 text-amber-400 ring-1 ring-amber-500/20' :
+                            'bg-slate-800 text-slate-400'
+                        }`}>
+                        {p.status}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 align-top text-slate-400">
+                      {p.announcement_date || "-"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

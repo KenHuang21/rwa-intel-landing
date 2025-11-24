@@ -44,80 +44,82 @@ export default async function ProjectDetailPage(props: {
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16">
-      <Link
-        href="/projects"
-        className="text-sm text-cyan-600 hover:underline"
-      >
-        ← Back to all projects
-      </Link>
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="mx-auto max-w-4xl px-4 py-16">
+        <Link
+          href="/projects"
+          className="text-sm text-cyan-400 hover:text-cyan-300 hover:underline"
+        >
+          ← Back to all projects
+        </Link>
 
-      <h1 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900">
-        {project.name}
-      </h1>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-white">
+          {project.name}
+        </h1>
 
-      {project.description && (
-        <p className="mt-2 text-sm text-slate-600 max-w-2xl">
-          {project.description}
-        </p>
-      )}
+        {project.description && (
+          <p className="mt-2 text-sm text-slate-400 max-w-2xl">
+            {project.description}
+          </p>
+        )}
 
-      <div className="mt-6 grid gap-4 text-sm text-slate-700 sm:grid-cols-2">
-        <DetailItem label="Jurisdiction" value={project.jurisdiction} />
-        <DetailItem label="Category" value={project.category} />
-        <DetailItem label="Issuer" value={project.issuer} />
-        <DetailItem label="Status" value={project.status} />
-        <DetailItem label="Regulator" value={project.regulator} />
-        <DetailItem label="Announcement Date" value={project.announcement_date} />
-      </div>
-
-      {project.url && (
-        <div className="mt-6">
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center text-sm font-medium text-cyan-600 hover:text-cyan-500 hover:underline"
-          >
-            View official source ↗
-          </a>
+        <div className="mt-6 grid gap-4 text-sm text-slate-300 sm:grid-cols-2 rounded-2xl bg-slate-900/40 p-6 ring-1 ring-slate-800">
+          <DetailItem label="Jurisdiction" value={project.jurisdiction} />
+          <DetailItem label="Category" value={project.category} />
+          <DetailItem label="Issuer" value={project.issuer} />
+          <DetailItem label="Status" value={project.status} />
+          <DetailItem label="Regulator" value={project.regulator} />
+          <DetailItem label="Announcement Date" value={project.announcement_date} />
         </div>
-      )}
 
-      {project.key_participants && project.key_participants.length > 0 && (
-        <section className="mt-8">
-          <h2 className="text-sm font-semibold text-slate-800 uppercase tracking-wide">
-            Key Participants
-          </h2>
-          <ul className="mt-2 list-disc pl-5 text-sm text-slate-700 space-y-1">
-            {project.key_participants.map((p) => (
-              <li key={p}>{p}</li>
-            ))}
-          </ul>
-        </section>
-      )}
+        {project.url && (
+          <div className="mt-6">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-sm font-medium text-cyan-400 hover:text-cyan-300 hover:underline"
+            >
+              View official source ↗
+            </a>
+          </div>
+        )}
 
-      {project.technical_stack && (
-        <section className="mt-8">
-          <h2 className="text-sm font-semibold text-slate-800 uppercase tracking-wide">
-            Technical Stack
-          </h2>
-          <p className="mt-2 text-sm text-slate-700">
-            {project.technical_stack}
-          </p>
-        </section>
-      )}
+        {project.key_participants && project.key_participants.length > 0 && (
+          <section className="mt-8">
+            <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wide">
+              Key Participants
+            </h2>
+            <ul className="mt-2 list-disc pl-5 text-sm text-slate-300 space-y-1">
+              {project.key_participants.map((p) => (
+                <li key={p}>{p}</li>
+              ))}
+            </ul>
+          </section>
+        )}
 
-      {project.notes && (
-        <section className="mt-8">
-          <h2 className="text-sm font-semibold text-slate-800 uppercase tracking-wide">
-            Notes
-          </h2>
-          <p className="mt-2 text-sm text-slate-700 whitespace-pre-line">
-            {project.notes}
-          </p>
-        </section>
-      )}
+        {project.technical_stack && (
+          <section className="mt-8">
+            <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wide">
+              Technical Stack
+            </h2>
+            <p className="mt-2 text-sm text-slate-300">
+              {project.technical_stack}
+            </p>
+          </section>
+        )}
+
+        {project.notes && (
+          <section className="mt-8">
+            <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wide">
+              Notes
+            </h2>
+            <p className="mt-2 text-sm text-slate-300 whitespace-pre-line">
+              {project.notes}
+            </p>
+          </section>
+        )}
+      </div>
     </div>
   );
 }
@@ -129,7 +131,7 @@ function DetailItem({ label, value }: { label: string; value?: string }) {
       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
         {label}
       </div>
-      <div className="mt-1 text-sm text-slate-800">{value}</div>
+      <div className="mt-1 text-sm text-slate-200">{value}</div>
     </div>
   );
 }

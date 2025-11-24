@@ -22,22 +22,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       {/* Nav */}
-      <header className="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-slate-950/70">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-8 rounded-2xl bg-cyan-400/20 ring-1 ring-cyan-300/30 grid place-content-center">🌐</div>
-            <span className="font-semibold tracking-tight">Tokenised RWA Intelligence</span>
-          </div>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-slate-300">
-            <a href="#features" className="hover:text-white">Features</a>
-            <a href="#pricing" className="hover:text-white">Pricing</a>
-            <a href="#faq" className="hover:text-white">FAQ</a>
-          </nav>
-          <a href="#waitlist" className="inline-flex items-center gap-2 rounded-2xl bg-cyan-500 px-4 py-2 text-sm font-medium text-slate-950 hover:bg-cyan-400 transition-colors">
-            Join Early Access <ArrowRight size={16} />
-          </a>
-        </div>
-      </header>
+
 
       {/* Hero */}
       <section className="relative overflow-hidden">
@@ -60,18 +45,18 @@ export default function LandingPage() {
                 </a>
               </div>
               <div className="mt-6 flex items-center gap-4 text-sm text-slate-400">
-                <span className="inline-flex items-center gap-2"><ShieldCheck size={16}/> Built by industry insiders</span>
-                <span className="inline-flex items-center gap-2"><Bot size={16}/> Powered by AI</span>
+                <span className="inline-flex items-center gap-2"><ShieldCheck size={16} /> Built by industry insiders</span>
+                <span className="inline-flex items-center gap-2"><Bot size={16} /> Powered by AI</span>
               </div>
             </div>
             <div className="relative">
               <div className="rounded-3xl border border-slate-800 bg-slate-900/40 p-6 shadow-2xl ring-1 ring-white/5">
                 <div className="grid grid-cols-2 gap-4">
-                <HeroCard
-  title="Projects Indexed"
-  value={String((projects as any[]).length)}
-  subtitle="HK & SG pilots"
-/>
+                  <HeroCard
+                    title="Projects Indexed"
+                    value={String((projects as any[]).length)}
+                    subtitle="HK & SG pilots"
+                  />
                   <HeroCard title="Jurisdictions" value="14" subtitle="with RWA activity" />
                   <HeroCard title="Chains" value="11" subtitle="L1/L2 coverage" />
                   <HeroCard title="Custodians" value="25" subtitle="infra directory" />
@@ -121,12 +106,12 @@ export default function LandingPage() {
           </div>
 
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Feature icon={<Database className="h-5 w-5"/>} title="Unified RWA Registry" desc="Projects, issuers, asset classes, chains, custodians — fully searchable and exportable."/>
-            <Feature icon={<Search className="h-5 w-5"/>} title="Filings → Structured Data" desc="LLM summarisation converts regulatory text and PRs into clean JSON entries."/>
-            <Feature icon={<Bot className="h-5 w-5"/>} title="Agentic Monitoring" desc="Daily crawls with dedupe, QA rules, and trend detection."/>
-            <Feature icon={<LineChart className="h-5 w-5"/>} title="Analytics Layer" desc="Compare jurisdictions, chains, and categories over time."/>
-            <Feature icon={<ShieldCheck className="h-5 w-5"/>} title="RegTech-Grade" desc="Audit trail, sources, and update timestamps for institutional trust."/>
-            <Feature icon={<CheckCircle2 className="h-5 w-5"/>} title="Founder-Market Fit" desc="Built by tokenisation practitioners for decision-makers."/>
+            <Feature icon={<Database className="h-5 w-5" />} title="Unified RWA Registry" desc="Projects, issuers, asset classes, chains, custodians — fully searchable and exportable." />
+            <Feature icon={<Search className="h-5 w-5" />} title="Filings → Structured Data" desc="LLM summarisation converts regulatory text and PRs into clean JSON entries." />
+            <Feature icon={<Bot className="h-5 w-5" />} title="Agentic Monitoring" desc="Daily crawls with dedupe, QA rules, and trend detection." />
+            <Feature icon={<LineChart className="h-5 w-5" />} title="Analytics Layer" desc="Compare jurisdictions, chains, and categories over time." />
+            <Feature icon={<ShieldCheck className="h-5 w-5" />} title="RegTech-Grade" desc="Audit trail, sources, and update timestamps for institutional trust." />
+            <Feature icon={<CheckCircle2 className="h-5 w-5" />} title="Founder-Market Fit" desc="Built by tokenisation practitioners for decision-makers." />
           </div>
         </div>
       </section>
@@ -135,9 +120,9 @@ export default function LandingPage() {
       <section id="insights" className="py-20 border-t border-slate-800/60">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-6">
-            <InsightCard title="HKMA x Pilot Insights" tag="Hong Kong" summary="CBDC settlement and tokenised bond pilots broaden collateral scope; 3 new custodians added."/>
-            <InsightCard title="MAS Project Orchid" tag="Singapore" summary="Stablecoin and purpose-bound money trials align with security token infra; Interop with pilots expanding."/>
-            <InsightCard title="EU Tokenisation Update" tag="EU" summary="MiCA + DLT Pilot Regime drive issuance frameworks; custody and secondary trading activation increasing."/>
+            <InsightCard title="HKMA x Pilot Insights" tag="Hong Kong" summary="CBDC settlement and tokenised bond pilots broaden collateral scope; 3 new custodians added." />
+            <InsightCard title="MAS Project Orchid" tag="Singapore" summary="Stablecoin and purpose-bound money trials align with security token infra; Interop with pilots expanding." />
+            <InsightCard title="EU Tokenisation Update" tag="EU" summary="MiCA + DLT Pilot Regime drive issuance frameworks; custody and secondary trading activation increasing." />
           </div>
         </div>
       </section>
@@ -151,9 +136,9 @@ export default function LandingPage() {
           </div>
 
           <div className="mt-10 grid lg:grid-cols-3 gap-6">
-            <PriceCard name="Analyst" price="$99/mo" cta="Join Waitlist" features={["Dashboard access","Weekly RWA digest","Basic search & export"]}/>
-            <PriceCard name="Pro" price="$499/mo" highlight cta="Reserve Spot" features={["Full database & filters","Alerts & change logs","Jurisdiction analytics"]}/>
-            <PriceCard name="Institutional" price="$2,000+/mo" cta="Request Pilot" features={["API & bulk export","Monthly analyst call","Priority roadmap input"]}/>
+            <PriceCard name="Analyst" price="$99/mo" cta="Join Waitlist" features={["Dashboard access", "Weekly RWA digest", "Basic search & export"]} />
+            <PriceCard name="Pro" price="$499/mo" highlight cta="Reserve Spot" features={["Full database & filters", "Alerts & change logs", "Jurisdiction analytics"]} />
+            <PriceCard name="Institutional" price="$2,000+/mo" cta="Request Pilot" features={["API & bulk export", "Monthly analyst call", "Priority roadmap input"]} />
           </div>
         </div>
       </section>
@@ -195,10 +180,10 @@ export default function LandingPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <h3 className="text-2xl sm:text-4xl font-bold text-center">FAQ</h3>
           <div className="mt-8 grid md:grid-cols-2 gap-6">
-            <Faq q="What sources do you monitor?" a="Regulator portals (e.g., HKMA, MAS, SFC), official press releases, issuer websites, and trusted industry trackers. Every entry includes source links and timestamps."/>
-            <Faq q="How accurate is the data?" a="Entries are generated by AI agents with human-in-the-loop checks for pilots and institutional clients. We maintain audit trails and change logs."/>
-            <Faq q="Which jurisdictions are covered first?" a="Phase 1 focuses on Hong Kong and Singapore, then expands to EU, UAE, and UK based on user demand."/>
-            <Faq q="Do you offer an API?" a="Yes — Institutional plan includes API and bulk export for internal dashboards and research workflows."/>
+            <Faq q="What sources do you monitor?" a="Regulator portals (e.g., HKMA, MAS, SFC), official press releases, issuer websites, and trusted industry trackers. Every entry includes source links and timestamps." />
+            <Faq q="How accurate is the data?" a="Entries are generated by AI agents with human-in-the-loop checks for pilots and institutional clients. We maintain audit trails and change logs." />
+            <Faq q="Which jurisdictions are covered first?" a="Phase 1 focuses on Hong Kong and Singapore, then expands to EU, UAE, and UK based on user demand." />
+            <Faq q="Do you offer an API?" a="Yes — Institutional plan includes API and bulk export for internal dashboards and research workflows." />
           </div>
         </div>
       </section>
@@ -263,7 +248,7 @@ function PriceCard({ name, price, features, cta, highlight }: { name: string; pr
       <div className="mt-2 text-3xl font-bold">{price}</div>
       <ul className="mt-4 space-y-2 text-sm text-slate-300">
         {features.map((f, i) => (
-          <li key={i} className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 mt-0.5 text-cyan-300"/> {f}</li>
+          <li key={i} className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 mt-0.5 text-cyan-300" /> {f}</li>
         ))}
       </ul>
       <a href="#waitlist" className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-4 py-2 font-medium transition-colors ${highlight ? "bg-cyan-500 text-slate-950 hover:bg-cyan-400" : "ring-1 ring-slate-700 text-slate-200 hover:bg-slate-900"}`}>
